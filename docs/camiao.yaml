@@ -88,19 +88,22 @@ components:
       properties:
         id:
           type: integer
-          description: ID do camião
-        nome:
+          autoIncrement: true
+          primaryKey: true
+        marca:
           type: string
-          description: Nome do camião
         matricula:
           type: string
-          description: Matrícula do camião
+      required:
+        - marca
+        - matricula
     CamiaoInput:
       type: object
       properties:
-        nome:
+        marca:
           type: string
-          description: Nome do camião
         matricula:
           type: string
-          description: Matrícula do camião
+      required:
+        - marca
+        - matricula

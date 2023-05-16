@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Oauth 2.0 example with passport and express - Login Page</title>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .login-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .login-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-<a href="/auth/github">Sign in with GitHub</a>
+  <h1>Bem-vindo à Transportadora</h1>
+  <p>Faça login clicando no botão abaixo:</p>
+  <a href="/auth/github" class="login-button">Login</a>
 </body>
 </html>

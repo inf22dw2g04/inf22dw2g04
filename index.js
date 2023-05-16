@@ -7,8 +7,6 @@ const githubStratergy = require("passport-github2").Strategy;
 const axios = require("axios");
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-
-const camioesRouter = require('./routes/camioesRouter');
 const app = express();
 const port = 3009;
 const GITHUB_CLIENT_ID = "3dfecaaff1b10c82ae34"; // PLEASE CREATE YOUR OWN APPLICATION AT GITHUB
@@ -76,7 +74,8 @@ const swaggerSpec = swaggerJSDoc(options);
     app.get("/docs/swagger.json", (req, res) => res.json(swaggerSpec));
     app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-
+const camioesRouter = require('./routes/camioesRouter');
+    app.use('/camioes', camioesRouter);
 
 app.use(session(sessionOption));
 app.use(passport.initialize());
@@ -90,6 +89,7 @@ app.get("/", auth , function (req, res){
 });
 app.get("/login", function(req, res){
     res.sendFile(__dirname+"/public/login.html");
+    /*res.sendFile(__dirname+"/public/login.html");*/
 });
 app.get("/logout", function(req,res){
     req.logout(function(err) {
@@ -156,7 +156,7 @@ app.use(express.static(__dirname+"/public"));
     })*/
 })();
 
-app.use('/api', camioesRouter);
+
 
 
 //start server
