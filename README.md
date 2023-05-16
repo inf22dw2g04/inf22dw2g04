@@ -50,4 +50,4 @@ _Please add at least on section (a file) per Chapter. But you can add more._
 ## Team
 * Diogo Gomes [@DiogoGomes](https://github.com/diogogomes-pt)
 * David Brito [@DavidBrito](https://github.com/DavidBrito12)
-* Gonçalo Ramos [@GonçaloRamos]([https://github.com/DavidBrito12](https://github.com/Goncalo08)
+* Gonçalo Ramos [@GonçaloRamos](https://github.com/Goncalo08)
