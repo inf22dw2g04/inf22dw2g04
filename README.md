@@ -6,7 +6,7 @@ Este repositório serve para alojar o projeto, da cadeira de Desenvolvimento Web
 
 An example report using markdown on Github. This documentation is writen using [Markdown](https://www.markdownguide.org/). Here is a [link to the basic syntax](https://www.markdownguide.org/basic-syntax), but an [extended syntax](https://www.markdownguide.org/extended-syntax/) is also available. If you're starting with Markdown, you may want to try a [Markdown Tutorial](https://www.markdowntutorial.com/) and read the [getting started](https://www.markdownguide.org/getting-started/) section.
 
-## Organização do repositorio
+## Organização do Repositório
 
 
 _Please help reader navigate around describing how the repository is organized by providing links_
@@ -32,11 +32,7 @@ A [table](https://www.markdownguide.org/extended-syntax/#tables) may be usefull 
 ### Frameworks and Libraries
 
 * Docker
-* Multipass
 * NodeJS
-* JQuery
-* Laravel
-* Bootstrap
 * ReactJS
 
 ## Report
