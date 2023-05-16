@@ -1,0 +1,1 @@
+exports.camiaoRoutes = require("./camiaoRoutes");

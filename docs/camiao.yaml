@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+  title: API de Camiões
+  version: 1.0.0
+paths:
+  /camioes:
+    get:
+      summary: Obter todos os camiões
+      responses:
+        '200':
+          description: Sucesso. Retorna todos os camiões.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Camiao'
+        '500':
+          description: Erro interno do servidor. Falha ao obter os camiões.
+    post:
+      summary: Criar um novo camião
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CamiaoInput'
+      responses:
+        '201':
+          description: Sucesso. Retorna o camião criado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Camiao'
+        '500':
+          description: Erro interno do servidor. Falha ao criar o camião.
+  /camioes/{id}:
+    get:
+      summary: Obter um camião pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID do camião a ser obtido
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Sucesso. Retorna o camião correspondente ao ID.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Camiao'
+        '404':
+          description: Camião não encontrado.
+        '500':
+          description: Erro interno do servidor. Falha ao obter o camião.
+    put:
+      summary: Atualizar um camião pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID do camião a ser atualizado
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CamiaoInput'
+      responses:
+        '200':
+          description: Sucesso. Retorna o camião atualizado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Camiao'
+        '404':
+          description: Camião não encontrado.
+        '500':
+          description: Erro interno do servidor. Falha ao atualizar o camião.
+components:
+  schemas:
+    Camiao:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID do camião
+        nome:
+          type: string
+          description: Nome do camião
+        matricula:
+          type: string
+          description: Matrícula do camião
+    CamiaoInput:
+      type: object
+      properties:
+        nome:
+          type: string
+          description: Nome do camião
+        matricula:
+          type: string
+          description: Matrícula do camião

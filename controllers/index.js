@@ -1,0 +1,1 @@
+exports.camiaoController = require("./camiaoController");
