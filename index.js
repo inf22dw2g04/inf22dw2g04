@@ -5,6 +5,7 @@ const session = require("express-session");
 const passport = require ("passport");
 const githubStratergy = require("passport-github2").Strategy;
 const axios = require("axios");
+const camiaoRoutes = require('./routes/camiaoRoutes');
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const app = express();
@@ -64,9 +65,16 @@ const swaggerDefinition = {
     security: [{ OAuth2Security: [] }]*/
 };
 
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect('/login');
+}
+
 const options = {
     swaggerDefinition,
-    apis: ["./docs/*.yaml"],
+    apis: ["./docs/**/*.yaml"],
     };
     
 
@@ -74,15 +82,34 @@ const swaggerSpec = swaggerJSDoc(options);
     app.get("/docs/swagger.json", (req, res) => res.json(swaggerSpec));
     app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-const camioesRouter = require('./routes/camioesRouter');
-    app.use('/camioes', camioesRouter);
 
-app.use(session(sessionOption));
+app.use(session({
+    secret: 'secretpassword',
+    resave: false,
+    saveUninitialized: false
+}));
+
+/*app.use(session(sessionOption));*/
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded(bodyParserOptions));
+
+
+app.get('/camiao', ensureAuthenticated, camiaoRoutes);
+app.get('/camiao/:id', camiaoRoutes);
+app.put('/camiao/:id', camiaoRoutes);
+app.post('/camiao', camiaoRoutes);
+
+
+app.get('/protected', ensureAuthenticated, (req, res) => {
+    res.send('Esta é uma página protegida');
+  });
+
+
+
+app.use('/api', camiaoRoutes);
 
 app.get("/", auth , function (req, res){
     res.sendFile(__dirname+"/public/protected.html");
