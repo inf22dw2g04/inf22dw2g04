@@ -1,5 +1,0 @@
-FROM mysql:latest
-ENV MYSQL_ROOT_PASSWORD=12345678
-ENV MYSQL_DATABASE=transportadora
-ENV MYSQL_USER=localhost
-COPY transportadora.sql /docker-entrypoint-initdb.d/

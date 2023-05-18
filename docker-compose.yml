@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=transportadora
+      
+
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3009:3009
+    depends_on:
+      - mysql
+    environment:
+      - DB_HOST=mysql
