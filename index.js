@@ -100,29 +100,29 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded(bodyParserOptions));
 
 
-app.get('/camiao', camiaoRoutes);
-app.get('/camiao/:id', camiaoRoutes);
-app.put('/camiao/:id', camiaoRoutes);
-app.post('/camiao', camiaoRoutes);
-app.delete('/camiao/:id', camiaoRoutes);
+app.get('/camiao', ensureAuthenticated, camiaoRoutes);
+app.get('/camiao/:id', ensureAuthenticated, camiaoRoutes);
+app.put('/camiao/:id', ensureAuthenticated, camiaoRoutes);
+app.post('/camiao', ensureAuthenticated, camiaoRoutes);
+app.delete('/camiao/:id', ensureAuthenticated, camiaoRoutes);
 
-app.get('/camionista', camionistaRoutes);
-app.get('/camionista/:id', camionistaRoutes);
-app.put('/camionista/:id', camionistaRoutes);
-app.post('/camionista', camionistaRoutes);
-app.delete('/camionista/:id', camionistaRoutes);
+app.get('/camionista', ensureAuthenticated, camionistaRoutes);
+app.get('/camionista/:id', ensureAuthenticated, camionistaRoutes);
+app.put('/camionista/:id', ensureAuthenticated, camionistaRoutes);
+app.post('/camionista', ensureAuthenticated, camionistaRoutes);
+app.delete('/camionista/:id', ensureAuthenticated, camionistaRoutes);
 
-app.get('/rota', rotaRoutes);
-app.get('/rota/:id', rotaRoutes);
-app.put('/rota/:id', rotaRoutes);
-app.post('/rota', rotaRoutes);
-app.delete('/rota/:id', rotaRoutes);
+app.get('/rota', ensureAuthenticated, rotaRoutes);
+app.get('/rota/:id', ensureAuthenticated, rotaRoutes);
+app.put('/rota/:id', ensureAuthenticated, rotaRoutes);
+app.post('/rota', ensureAuthenticated, rotaRoutes);
+app.delete('/rota/:id', ensureAuthenticated, rotaRoutes);
 
-app.get('/armazem', armazemRoutes);
-app.get('/armazem/:id', armazemRoutes);
-app.put('/armazem/:id', armazemRoutes);
-app.post('/armazem', armazemRoutes);
-app.delete('/armazem/:id', armazemRoutes);
+app.get('/armazem', ensureAuthenticated, armazemRoutes);
+app.get('/armazem/:id', ensureAuthenticated, armazemRoutes);
+app.put('/armazem/:id', ensureAuthenticated, armazemRoutes);
+app.post('/armazem', ensureAuthenticated, armazemRoutes);
+app.delete('/armazem/:id', ensureAuthenticated, armazemRoutes);
 
 
 
