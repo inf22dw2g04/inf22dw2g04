@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  title: API de Camiões
+  version: 1.0.0
+paths:
+  /rota/:
+    post:
+      tags:
+        - Rota
+      summary: Criar uma rota
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                pontoPartida:
+                  type: string
+                  description: Ponto de partida da rota
+                pontoChegada:
+                  type: string
+                  description: Ponto de chegada da rota
+              required:
+                - pontoPartida
+                - pontoChegada
+      responses:
+        '201':
+          description: Rota criada com sucesso
+        '500':
+          description: Erro ao criar a rota
+
+    get:
+      tags:
+        - Rota
+      summary: Obter todas as rotas
+      responses:
+        '200':
+          description: Lista de rotas obtida com sucesso
+        '500':
+          description: Erro ao obter as rotas
+
+  /rota/{id}:
+    get:
+      tags:
+        - Rota
+      summary: Obter uma rota pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID da rota a ser obtida
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Rota obtida com sucesso
+        '404':
+          description: Rota não encontrada
+        '500':
+          description: Erro ao obter a rota
+
+    put:
+      tags:
+        - Rota
+      summary: Atualizar uma rota pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID da rota a ser atualizada
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                pontoPartida:
+                  type: string
+                  description: Novo ponto de partida da rota
+                pontoChegada:
+                  type: string
+                  description: Novo ponto de chegada da rota
+              required:
+                - pontoPartida
+                - pontoChegada
+      responses:
+        '200':
+          description: Rota atualizada com sucesso
+        '404':
+          description: Rota não encontrada
+        '500':
+          description: Erro ao atualizar a rota
+
+    delete:
+      tags:
+        - Rota
+      summary: Excluir uma rota pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID da rota a ser excluída
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Rota excluída com sucesso
+        '404':
+          description: Rota não encontrada
+        '500':
+          description: Erro ao excluir a rota
+components:
+  schemas:
+    Rota:
+      type: object
+      properties:
+        id:
+          type: integer
+          autoIncrement: true
+          primaryKey: true
+        pontoPartida:
+          type: string
+        pontoChegada:
+          type: string
+      required:
+        - pontoPartida
+        - pontoChegada
+    RotaInput:
+      type: object
+      properties:
+        pontoPartida:
+          type: string
+        pontoChegada:
+          type: string
+      required:
+        - pontoPartida
+        - pontoChegada

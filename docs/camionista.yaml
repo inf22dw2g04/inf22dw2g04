@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: API de Camiões
+  version: 1.0.0
+paths:
+  /camionista:
+    post:
+      tags:
+        - Camionista
+      summary: Cria um novo camionista
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CamionistaInput'
+      responses:
+        '201':
+          description: Camionista criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CamionistaInput'
+        '500':
+          $ref: '#/components/responses/ErrorResponse'
+
+    get:
+      tags:
+        - Camionista
+      summary: Obtém todos os camionistas
+      responses:
+        '200':
+          description: Lista de camionistas obtida com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CamionistaInput'
+        '500':
+          $ref: '#/components/responses/ErrorResponse'
+
+  /camionista/{id}:
+    get:
+      tags:
+        - Camionista
+      summary: Obtém um camionista pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID do camionista
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Camionista obtido com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Camionista'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '500':
+          $ref: '#/components/responses/ErrorResponse'
+
+    put:
+      tags:
+        - Camionista
+      summary: Atualiza um camionista pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID do camionista
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Camionista'
+      responses:
+        '200':
+          description: Camionista atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Camionista'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '500':
+          $ref: '#/components/responses/ErrorResponse'
+
+    delete:
+      tags:
+        - Camionista
+      summary: Exclui um camionista pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID do camionista
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Camionista excluído com sucesso
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '500':
+          $ref: '#/components/responses/ErrorResponse'
+
+components:
+  schemas:
+    Camionista:
+      type: object
+      properties:
+        id:
+          type: integer
+          autoIncrement: true
+          primaryKey: true
+        nome:
+          type: string
+        cc:
+          type: integer
+      required:
+        - nome
+        - cc
+    CamionistaInput:
+      type: object
+      properties:
+        nome:
+          type: string
+        cc:
+          type: integer
+      required:
+        - nome
+        - cc
+
+  responses:
+    ErrorResponse:
+      description: Resposta de erro
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                description: Mensagem de erro

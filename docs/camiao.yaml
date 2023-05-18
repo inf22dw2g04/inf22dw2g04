@@ -16,7 +16,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Camiao'
+                  $ref: '#/components/schemas/CamiaoInput'
         '500':
           description: Erro interno do servidor. Falha ao obter os camiões.
     post:
@@ -77,7 +77,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CamiaoInput'
+              $ref: '#/components/schemas/Camiao'
       responses:
         '200':
           description: Sucesso. Retorna o camião atualizado.
@@ -89,6 +89,24 @@ paths:
           description: Camião não encontrado.
         '500':
           description: Erro interno do servidor. Falha ao atualizar o camião.
+    delete:
+      tags:
+        - Camiao
+      summary: Excluir um camião
+      parameters:
+        - name: id
+          in: path
+          description: ID do camião a ser excluído
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Camião excluído com sucesso
+        '404':
+          description: Camião não encontrado
+        '500':
+          description: Erro interno do servidor
 components:
   schemas:
     Camiao:
@@ -115,3 +133,5 @@ components:
       required:
         - marca
         - matricula
+
+

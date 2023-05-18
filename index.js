@@ -6,6 +6,9 @@ const passport = require ("passport");
 const githubStratergy = require("passport-github2").Strategy;
 const axios = require("axios");
 const camiaoRoutes = require('./routes/camiaoRoutes');
+const rotaRoutes = require('./routes/rotaRoutes');
+const camionistaRoutes = require('./routes/camionistaRoutes');
+const armazemRoutes = require('./routes/armazemRoutes');
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const app = express();
@@ -49,10 +52,10 @@ const auth = function (req, res, next){
 const swaggerDefinition = { 
     openapi: "3.0.0",
     info: {
-    title: "OAuth2.0_01",
+    title: "Transportadora",
     version: "1.0.0",
-    description: "Example OAuth2.0 protected API",
-    contact: { name: "Transport" },
+    description: "OAuth2.0 protected API",
+    contact: { name: "Transportadora" },
     },
     servers: [{ url: "http://localhost:" + port }],
     /*components: { securitySchemes: {
@@ -97,10 +100,30 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded(bodyParserOptions));
 
 
-app.get('/camiao', ensureAuthenticated, camiaoRoutes);
+app.get('/camiao', camiaoRoutes);
 app.get('/camiao/:id', camiaoRoutes);
 app.put('/camiao/:id', camiaoRoutes);
 app.post('/camiao', camiaoRoutes);
+app.delete('/camiao/:id', camiaoRoutes);
+
+app.get('/camionista', camionistaRoutes);
+app.get('/camionista/:id', camionistaRoutes);
+app.put('/camionista/:id', camionistaRoutes);
+app.post('/camionista', camionistaRoutes);
+app.delete('/camionista/:id', camionistaRoutes);
+
+app.get('/rota', rotaRoutes);
+app.get('/rota/:id', rotaRoutes);
+app.put('/rota/:id', rotaRoutes);
+app.post('/rota', rotaRoutes);
+app.delete('/rota/:id', rotaRoutes);
+
+app.get('/armazem', armazemRoutes);
+app.get('/armazem/:id', armazemRoutes);
+app.put('/armazem/:id', armazemRoutes);
+app.post('/armazem', armazemRoutes);
+app.delete('/armazem/:id', armazemRoutes);
+
 
 
 app.get('/protected', ensureAuthenticated, (req, res) => {

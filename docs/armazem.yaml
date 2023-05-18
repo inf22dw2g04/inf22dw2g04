@@ -1,0 +1,132 @@
+paths:
+  /armazem:
+    post:
+      tags:
+        - Armazem
+      summary: Criar um novo armazem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ArmazemInput"
+      responses:
+        '201':
+          description: Armazem criado com sucesso
+        '500':
+          description: Ocorreu um erro ao criar o armazem
+
+    get:
+      tags:
+        - Armazem
+      summary: Obter todos os armazens
+      responses:
+        '200':
+          description: Lista de armazens obtida com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ArmazemInput"
+        '500':
+          description: Ocorreu um erro ao obter os armazens
+
+  /armazem/{id}:
+    get:
+      tags:
+        - Armazem
+      summary: Obter um armazem específico por ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: ID do armazem a ser obtido
+      responses:
+        '200':
+          description: Armazem obtido com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Armazem"
+        '404':
+          description: Armazem não encontrado
+        '500':
+          description: Ocorreu um erro ao obter o armazem
+
+    put:
+      tags:
+        - Armazem
+      summary: Atualizar um armazem específico por ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: ID do armazem a ser atualizado
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Armazem"
+      responses:
+        '200':
+          description: Armazem atualizado com sucesso
+        '404':
+          description: Armazem não encontrado
+        '500':
+          description: Ocorreu um erro ao atualizar o armazem
+
+    delete:
+      tags:
+        - Armazem
+      summary: Excluir um armazem específico por ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: ID do armazem a ser excluído
+      responses:
+        '200':
+          description: Armazem excluído com sucesso
+        '404':
+          description: Armazem não encontrado
+        '500':
+          description: Ocorreu um erro ao excluir o armazem
+
+
+components:
+  schemas:
+    Armazem:
+      type: object
+      properties:
+        id:
+          type: integer
+          autoIncrement: true
+          primaryKey: true
+        localizacao:
+          type: string
+        tipo:
+          type: string
+      required:
+        - localizacao
+        - tipo
+    ArmazemInput:
+      type: object
+      properties:
+        localizacao:
+          type: string
+        tipo:
+          type: string
+      required:
+        - localizacao
+        - tipo
