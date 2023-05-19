@@ -7,7 +7,10 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=12345678
       - MYSQL_DATABASE=transportadora
-      
+    networks:
+      - test
+    volumes:
+      -  data:/var/lib/mysql
 
   nodejs:
     build:
@@ -19,3 +22,12 @@ services:
       - mysql
     environment:
       - DB_HOST=mysql
+    networks:
+      - test
+
+
+networks:
+      test:
+
+volumes:
+       data:
