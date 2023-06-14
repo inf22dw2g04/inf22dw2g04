@@ -1,0 +1,176 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.component-container {
+  margin-top:50px;
+  flex-basis: 30%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+body {
+  background-color: #e9e8e8; /* Cor de fundo cinza claro */
+}
+
+.submit-button2 {
+  padding: 8px 16px;
+  background-color: #62ad64;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+.submit-button2:hover {
+  background-color: #34ac29;
+}
+
+.submit-button3 {
+  padding: 8px 16px;
+  background-color: #af4c51;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+.submit-button3:hover {
+  background-color: #a04545;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bloc-tabs {
+  display: flex;
+}
+.tabs {
+
+  padding: 15px;
+  text-align: center;
+  width: 50%;
+  background: rgba(128, 128, 128, 0.075);
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.274);
+  box-sizing: content-box;
+  position: relative;
+  outline: none;
+}
+.tabs:not(:last-child){
+  border-right: 1px solid rgba(0, 0, 0, 0.274);
+}
+
+.active-tabs  {
+  background: white;
+  border-bottom: 1px solid transparent;
+}
+
+.active-tabs::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 2px);
+  height: 5px;
+  background: rgb(88, 147, 241);
+}
+
+
+
+button {
+  border: none;
+  
+}
+.content-tabs {
+  flex-grow : 1;
+}
+.content {
+  background: white;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.content h2 {
+  padding: 0px 0 5px 0px;
+}
+.content hr {
+  width: 100px;
+  height: 2px;
+  background: #222;
+  margin-bottom: 5px;
+}
+.content p {
+  width: 100%;
+  height: 100%;
+}
+.active-content {
+  display: block;
+}
+
+
+
+
+.login-out-bottom {
+  width: 100%;
+  justify-content: center;
+  display:grid;
+  bottom:6%;
+  position: fixed;
+}
+
+.rights {
+  width: 100%;
+  justify-content: center;
+  display:grid;
+  bottom:2%;
+  position: fixed;
+}
+
+
+
+.image {
+  width: 40%;
+  height: 40%;
+  display: list-item;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 8%;
+}
+
+
+.loginPage{
+  margin-top: 5%;
+}
