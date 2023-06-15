@@ -4,20 +4,18 @@ Este repositório serve para alojar o projeto, da cadeira de Desenvolvimento Web
 
 ## Descrição
 
-An example report using markdown on Github. This documentation is writen using [Markdown](https://www.markdownguide.org/). Here is a [link to the basic syntax](https://www.markdownguide.org/basic-syntax), but an [extended syntax](https://www.markdownguide.org/extended-syntax/) is also available. If you're starting with Markdown, you may want to try a [Markdown Tutorial](https://www.markdowntutorial.com/) and read the [getting started](https://www.markdownguide.org/getting-started/) section.
+Este projeto pretende auxiliar uma empresa de logística na sua gestão de frotas de camiões, camionistas, rotas e armazéns. Através de uma inteface intuitiva é possível adicionar, remover e editar todos estes componentes da empresa. Também rapidamente é possível observar a lista de todos os ativos disponíveis e observar por qual camião cada camionista está responsável no momento. Para tal é necessário associar cada camião a um camionista. A função de observação no mapa, em tempo real, de todos os camiões está em fase beta.
 
-## Organização do Repositório
-
-
-_Please help reader navigate around describing how the repository is organized by providing links_
-* **Source code** is in the [src folder](src/).
-* Report chapters are in [doc folder](doc/).
-* Initial [OpenApi document](api/openapi.yaml)
 
 ## Galeria
 
-_Please provide a galery of the final result, with small images_
-A [table](https://www.markdownguide.org/extended-syntax/#tables) may be usefull to organize the images.
+| Página      | Imagem |
+| ----------- | ----------- |
+| Página Ínicial      | ![Drag Racing](./api/public/globo/inicial.png)       |
+| Página Camiões   | ![Drag Racing](./api/public/globo/camioes.png)       |
+| Página Camionistas  | ![Drag Racing](./api/public/globo/camionistas.png)       |
+| Página Armazéns      | ![Drag Racing](./api/public/globo/armazens.png)       |
+| Página Rotas   | ![Drag Racing](./api/public/globo/rotas.png)       |
 
 ## Tecnologias
 
@@ -35,8 +33,6 @@ A [table](https://www.markdownguide.org/extended-syntax/#tables) may be usefull 
 * NodeJS
 * ReactJS
 
-## Report
-_Please add at least on section (a file) per Chapter. But you can add more._
 
 ### Apresentação do Projeto
 * Chapter 1: [Project presentation](doc/c1.md)
