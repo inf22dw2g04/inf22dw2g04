@@ -14,7 +14,7 @@ const TabelaCamionistas = () => {
 
   const obterCamionistas = async () => {
     try {
-      const response = await fetch('http://localhost:3009/camionista', { withCredentials: true });
+      const response = await fetch(`http://${window.location.hostname}:3009/camionista`, { withCredentials: true });
       if (response.ok) {
         const data = await response.json();
         setCamionistas(data);
@@ -28,7 +28,7 @@ const TabelaCamionistas = () => {
 
   const excluirCamionista = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3009/camionista/${id}`, {
+      const response = await fetch(`http://${window.location.hostname}:3009/camionista/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {
@@ -44,7 +44,7 @@ const TabelaCamionistas = () => {
 
   const atualizarCamionista = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3009/camionista/${id}`, {
+      const response = await fetch(`http://${window.location.hostname}:3009/camionista/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -133,7 +133,7 @@ const TabelaCamionistas = () => {
           <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>cc</th>
+            <th>CC</th>
             <th>Ações <button className="submit-button8" onClick={handleAdd}>
                 +
               </button></th>
@@ -174,11 +174,11 @@ const TabelaCamionistas = () => {
           ))}
         </tbody>
         <td colSpan="4" style={{ textAlign: 'right' }}>
-          Total de armazéns: {camionistas.length}
+          Total de camionistas: {camionistas.length}
         </td>
       </table>
       <button className="submit-button" onClick={handleAdd} style={{ display: 'none' }}>
-              Adicionar Camiao
+              Adicionar Camionista
       </button>
 
       {showModal && (

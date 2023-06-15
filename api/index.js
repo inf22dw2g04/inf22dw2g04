@@ -19,8 +19,13 @@ const GITHUB_CLIENT_ID = "3dfecaaff1b10c82ae34"; // PLEASE CREATE YOUR OWN APPLI
 const GITHUB_CLIENT_SECRET = "9b3128122499895a47b16bd420369d52da33092a"; // PLEASE CREATE YOUR OWN APPLICATION AT GITHUB
 const GITHUB_CALLBACK_URI = "http://localhost:3009/auth/github/callback";
 
+app.use(cors({
+    origin: true // Allow requests from only this origin
+  }));
+
 passport.serializeUser(function(user,done){done(null, user);});
 passport.deserializeUser(function(user,done){done(null, user);});
+
 
 const bodyParserOptions = {extended: true};
 const passportOptions = {
@@ -99,9 +104,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(cors({
-    origin: 'http://localhost:3000', // URL da sua aplicação React.js
-  }));
+
 
 
 app.use(bodyParser.json());

@@ -1,3 +1,5 @@
+
+
 version: '3'
 services:
   mysql:
@@ -7,7 +9,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=12345678
       - MYSQL_DATABASE=transportadora
-      
 
   nodejs:
     build:
@@ -19,3 +20,15 @@ services:
       - mysql
     environment:
       - DB_HOST=mysql
+  
+  frontend:
+    build:
+      context: ../app  # caminho para a pasta do frontend
+      dockerfile: Dockerfile  # caminho para o arquivo Dockerfile do frontend
+    ports:
+      - 3000:3000  # mapeamento de porta para acessar o frontend
+    depends_on:
+      - nodejs  # dependência do serviço backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:3009  # URL da API backend
+

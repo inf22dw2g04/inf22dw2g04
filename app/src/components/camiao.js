@@ -142,7 +142,8 @@ const TabelaCamioes = () => {
           <tr>
             <th>ID</th>
             <th>Marca</th>
-            <th>matricula</th>
+            <th>Matricula</th>
+            <th>ID Condutor</th>
             <th>Ações <button className="submit-button8" onClick={handleAdd}>
                 +
               </button></th>
@@ -152,9 +153,11 @@ const TabelaCamioes = () => {
           {camioes.map((camiao) => (
             <tr key={camiao.id}>
               <td>#{camiao.id}</td>
+              
               <td>{editingId === camiao.id ? <input type="text" value={marca} onChange={(e) => setMarca(e.target.value)} /> : camiao.marca}</td>
               
               <td>{editingId === camiao.id ? <input type="text" value={matricula} onChange={(e) => setmatricula(e.target.value)} /> : camiao.matricula}</td>
+              <td>#{camiao.idCamionista}</td>
               <td>
                 {editingId === camiao.id ? (
                   <>
@@ -171,8 +174,8 @@ const TabelaCamioes = () => {
             </tr>
           ))}
         </tbody>
-        <td colSpan="4" style={{ textAlign: 'right' }}>
-          Total de armazéns: {camioes.length}
+        <td colSpan="5" style={{ textAlign: 'right' }}>
+          Total de camiões: {camioes.length}
         </td>
       </table>
 
